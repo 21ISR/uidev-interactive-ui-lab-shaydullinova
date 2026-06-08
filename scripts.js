@@ -1,8 +1,9 @@
 const openBtn = document.querySelector('#show-popup')
-const closeBtn =  document.querySelector('.popup-close')
+const closeBtn = document.querySelector('.popup-close')
+
 const popup = document.querySelector('.popup-overlay')
-const headers = document.querySelectorAll('.accordion-header')
 const popupform = document.querySelector('#popup-form')
+
 
 openBtn.addEventListener('click', () => {
     popup.style.display = 'flex'
@@ -16,6 +17,22 @@ popupform.addEventListener('submit', () => {
     alert('Сообщение отправлено!')
 })
 
+const tabButton = document.querySelector('.tab-btn');
+const tabContent = document.querySelector('.tab-content');
+
+tabButton.forEach((button) => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab')
+        const targetContent = document.getElementById(tabId);
+
+        if (targetContent) {
+            tabButton.forEach((btn) => btn.classList.remove('active'))
+            button.classList.add('.active')
+        };
+    });
+});
+
+const headers = document.querySelectorAll('.accordion-header')
 document
     .querySelectorAll('.tab-btn')
     .forEach((btn) => btn.classList.remove('active'))
